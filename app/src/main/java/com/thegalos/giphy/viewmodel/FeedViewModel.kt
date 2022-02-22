@@ -2,7 +2,7 @@ package com.thegalos.giphy.viewmodel
 
 import androidx.lifecycle.*
 import com.thegalos.giphy.data.Gif
-import com.thegalos.giphy.MyApplication
+import com.thegalos.giphy.util.MyApplication
 import com.thegalos.giphy.network.ApiRequests
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

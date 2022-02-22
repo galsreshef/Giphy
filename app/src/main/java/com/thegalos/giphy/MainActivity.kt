@@ -3,6 +3,7 @@ package com.thegalos.giphy
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.thegalos.giphy.R
 import com.thegalos.giphy.databinding.ActivityMainBinding
 import timber.log.Timber
 

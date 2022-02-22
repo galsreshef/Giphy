@@ -9,7 +9,7 @@
             type="com.thegalos.giphy.data.Gif"/>
         <variable
             name="ClickListener"
-            type="com.thegalos.giphy.Adapter.GifClickListener" />
+            type="com.thegalos.giphy.adapter.Adapter.GifClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

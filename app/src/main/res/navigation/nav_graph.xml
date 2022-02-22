@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splash"
-        android:name="com.thegalos.giphy.Splash"
+        android:name="com.thegalos.giphy.ui.Splash"
         android:label="Splash"
         tools:layout="@layout/splash_fragment">
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/feed"
-        android:name="com.thegalos.giphy.Feed"
+        android:name="com.thegalos.giphy.ui.Feed"
         android:label="Main"
         tools:layout="@layout/fragment_feed" >
 
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/gif"
-        android:name="com.thegalos.giphy.ViewGif"
+        android:name="com.thegalos.giphy.ui.ViewGif"
         android:label="fragment_gif_view"
         tools:layout="@layout/gif_view_fragment" >
         <argument
