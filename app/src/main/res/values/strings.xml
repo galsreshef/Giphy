@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Giphy</string>
+    <string name="the_gif_is_yours">The Gif is yours</string>
+    <string name="created_by_gal_reshef">Created by the Gal Reshef</string>
+    <string name="rider_monkey">Rider Monkey</string>
+    <string name="version">Version %s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gif_image">gif image</string>
+    <string name="search">Search for a gif</string>
+    <string name="search_button">Search button</string>
+    <string name="monkeytech_logo">MonkeyTech logo</string>
+    <string name="save">Save Gif</string>
+    <string name="share">Share gif</string>
+
+</resources>
