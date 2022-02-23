@@ -1,9 +1,8 @@
 package com.thegalos.giphy
 
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.thegalos.giphy.R
+import androidx.appcompat.app.AppCompatActivity
 import com.thegalos.giphy.databinding.ActivityMainBinding
 import timber.log.Timber
 
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         mediaPlayer = MediaPlayer()
-mediaPlayer = MediaPlayer.create(this, R.raw.dance_monkey_acustic)
+        mediaPlayer = MediaPlayer.create(this, R.raw.dance_monkey_acustic)
         mediaPlayer.setOnPreparedListener{
             Timber.i("Media Player ready")
             mediaPlayer.setVolume(0.5f, 0.5f)
@@ -41,4 +40,16 @@ mediaPlayer = MediaPlayer.create(this, R.raw.dance_monkey_acustic)
         mediaPlayer.release()
         super.onDestroy()
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("possition", mediaPlayer.currentPosition)
+        mediaPlayer.pause()
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        val pos = savedInstanceState.getInt("possition")
+        mediaPlayer.seekTo(pos)
+        super.onRestoreInstanceState(savedInstanceState)
+    }
 }
+

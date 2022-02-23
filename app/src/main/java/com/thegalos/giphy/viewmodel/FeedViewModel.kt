@@ -91,13 +91,13 @@ class FeedViewModel2(application: MyApplication): AndroidViewModel(application) 
     }
 
 }
-//class FeedViewModelFactory(private val application: MyApplication) : ViewModelProvider.Factory {
-//    @Suppress("unchecked_cast")
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(FeedViewModel2::class.java)) {
-//            return FeedViewModel2(application) as T
-//        }
-//        throw IllegalArgumentException("Unknown ViewModel class")
-//    }
-//
-//}
+
+class FeedViewModelFactory(private val application: MyApplication) : ViewModelProvider.Factory {
+    @Suppress("unchecked_cast")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(FeedViewModel2::class.java)) {
+            return FeedViewModel2(application) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}

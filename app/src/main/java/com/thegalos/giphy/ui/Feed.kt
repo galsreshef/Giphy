@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.thegalos.giphy.adapter.Adapter
 import com.thegalos.giphy.databinding.FragmentFeedBinding
 import com.thegalos.giphy.util.MyApplication
 import com.thegalos.giphy.viewmodel.FeedViewModel2
+import com.thegalos.giphy.viewmodel.FeedViewModelFactory
 import timber.log.Timber
 
 /**
@@ -19,14 +21,16 @@ import timber.log.Timber
 class Feed : Fragment() {
 
     private lateinit var binding: FragmentFeedBinding
-    private lateinit var viewModel: FeedViewModel2
+
+    private  val viewModel : FeedViewModel2 by viewModels {
+        FeedViewModelFactory((requireActivity().application as MyApplication))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFeedBinding.inflate(inflater, container, false)
-        viewModel = FeedViewModel2((requireActivity().application as MyApplication))
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
