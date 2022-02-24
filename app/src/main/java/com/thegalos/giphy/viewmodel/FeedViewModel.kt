@@ -1,17 +1,18 @@
 package com.thegalos.giphy.viewmodel
 
 import androidx.lifecycle.*
+import com.google.android.material.snackbar.Snackbar
 import com.thegalos.giphy.data.Gif
 import com.thegalos.giphy.util.MyApplication
 import com.thegalos.giphy.network.ApiRequests
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
+import java.io.IOError
+import java.io.IOException
 
 /**
  * Created by Gal Reshef on 2/21/2022.
@@ -46,11 +47,20 @@ class FeedViewModel2(application: MyApplication): AndroidViewModel(application) 
             .build()
             .create(ApiRequests::class.java)
 
-        GlobalScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(Dispatchers.IO) {
             Timber.i("Starting coroutines")
             list.clear()
-            val response = gfRequest.getGif(apiKey = apiKey, q = q).awaitResponse()
-            if (response.isSuccessful) {
+            val response = try{
+                gfRequest.getGif(apiKey = apiKey, q = q).awaitResponse()
+        } catch (e: IOException) {
+            Timber.i("IO exception")
+            return@launch
+        } catch (e: HttpException) {
+            Timber.i("Http Exception")
+            return@launch
+        }
+
+            if (response.isSuccessful && response.body() != null) {
                 val gifItem = response.body()!!
                 for (i in 1..49) {
                     val gf = Gif()
